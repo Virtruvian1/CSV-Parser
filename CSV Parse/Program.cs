@@ -58,7 +58,7 @@ namespace Program
         public void TakeFilePath (string tempFilePath)
         {
             Console.Write("Please input file path: ");
-            FilePath = Console.ReadLine();
+            FilePath = Console.ReadLine(); // Add in foreach loop that reads through the entered filepath and adds a second '/' where one is needed
         }
     }
     
