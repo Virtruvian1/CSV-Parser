@@ -1,0 +1,67 @@
+CSV Parser
+
+1
+Input		| Take a CSV file path as an argument
+Store		| temp, public string [temp1]
+
+2
+Process		| Read temp1, whereever a "\" exist add a second "\" to equal "\\"
+Store		| temp, public string [temp1]
+
+3
+Process		| Check temp1 and see if the file path exist
+Yes			| If the file path exist, set check test to true, continue to the next step
+Store		| private bool [filePathExist]
+No			| If the file path does not exist throw an exception
+Exception	| "ERROR! The file path does not exist"
+
+
+4
+Process		| Check the file path and see if it contains ".csv"
+Yes			| If temp1 contains ".csv", set check test to true, continue to the next step
+Store		| private bool [filePathCorrect]
+No			| If temp1 does not contain ".csv" throw an exception
+Exception	| "ERROR! The document must be a .CSV File to parse, please check your file and try again"
+
+5
+Process		| Check filePathExist and filePathCorrect for true
+Yes			| If both are true set private var, continue to next step
+Store		| private string [filePath]
+No			| If one is false throw an exception
+Exception	| "ERROR! The file path provided does not exist or is not a .CSV File, please try again" 
+
+6
+Process		| Set delimeter options to parse through strings
+Store		| private chars [delimeter]
+
+7
+Process		| Open .CSV file from filePath
+
+8
+Process		| Read through line [n] of the open file, store into var
+Store		| private string [currentLine]
+
+9
+Process		| Read through currentLine stoping at specified delimiters, store into var
+Store		| private string [currentColumn]
+
+Note		| Add additional steps to check if the database exist, if not create it
+
+10
+Process		| Check line number [n] to see if it's 1
+Yes			| If n = 1, set the currentTable = currentColumn and currentColumn = currentColumn
+Store		| private string [currentTable] [currentColumn]
+No			| Continue to the next step
+
+11
+Process		| Check line number [n] to see if it's greater than 1
+Yes			| If n > 1, set currentColumn to the correct table and cloumn
+Store		| Into database
+No			| If it reaches this step and n !> 1, throw an exception
+Exception	| "ERROR! Line number is not counting correctly, this is a bug [BUG ID: 1.1]" ****
+
+12
+Process		| Once the document is finished, show completed status
+Output		| "Parsing Completed"
+
+**** BUG ID: [SOFTWARE-VERSION].[BUG-NUMBER]
